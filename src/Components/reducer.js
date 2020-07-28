@@ -1,14 +1,10 @@
-import {} from './constants'
-
 const initialState = {
     items: [],
     img: '',
     name: '',
     price: '',
-},
+};
 
-const Items = (store = initialState, action) => {
-
-}
+const Items = (state = initialState, action) => {};
 
 export default Items;
