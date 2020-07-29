@@ -6,6 +6,20 @@ export default class Items extends React.Component {
     }
 
     render() {
-        return <div></div>;
+        const { items } = this.props; //from reducer
+        return (
+            <div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>img</td>
+                            <td>name</td>
+                            <td>price</td>
+                            <td>basket functionality</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        );
     }
 }

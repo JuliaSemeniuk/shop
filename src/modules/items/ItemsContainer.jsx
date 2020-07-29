@@ -2,7 +2,11 @@ import React from 'react';
 import Items from './Items';
 import { connect } from 'react-redux';
 
-class ItemsContainer extends React.Component {}
+class ItemsContainer extends React.Component {
+    render() {
+        return <Items />;
+    }
+}
 
 const mapStateToProps = (store) => {
     return {};
