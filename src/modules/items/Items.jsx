@@ -1,4 +1,5 @@
 import React from 'react';
+import { ShoppingOutlined } from '@ant-design/icons';
 
 export default class Items extends React.Component {
     constructor(props) {
@@ -11,12 +12,22 @@ export default class Items extends React.Component {
             <div>
                 <table>
                     <tbody>
-                        <tr>
-                            <td>img</td>
-                            <td>name</td>
-                            <td>price</td>
-                            <td>basket functionality</td>
-                        </tr>
+                        {items.map((value) => {
+                            return (
+                                <div>
+                                    <div>
+                                        <img src={value.imageUrl} />
+                                    </div>
+                                    <div class="itemTitle">{value.title}</div>
+                                    <div class="itemTitle">{value.price}</div>
+                                    <div class="itemTitle">
+                                        <button>
+                                            <ShoppingOutlined />
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>

@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 
 class ItemsContainer extends React.Component {
     render() {
-        return <Items />;
+        const { items } = this.props;
+        return <Items items={items} />;
     }
 }
 
 const mapStateToProps = (store) => {
-    return {};
+    console.log('store: ' + store);
+    return {
+        items: store.items,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
