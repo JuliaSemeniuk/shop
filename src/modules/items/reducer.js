@@ -1,3 +1,5 @@
+import { GET_ITEMS } from './constants';
+
 const initialState = {
     items: [
         {
@@ -11,7 +13,17 @@ const initialState = {
 };
 
 const itemsReducer = (state = initialState, action) => {
-    return state; //state = initialState - initialisation of state at first time
+    switch (action.type) {
+        case GET_ITEMS: {
+            return {
+                ...state,
+                items: action.payload.items,
+            };
+        }
+        default: {
+            return state;
+        } //state = initialState - initialisation of state at first time
+    }
 };
 
 export default itemsReducer;
