@@ -1,4 +1,4 @@
-import { getItems } from './actions';
+import { getItems, activateModalWindow } from './actions';
 
 export const requestItems = (dispatch) => {
     fetch(
@@ -8,4 +8,8 @@ export const requestItems = (dispatch) => {
         .then((response) => {
             dispatch(getItems(response));
         });
+};
+
+export const modalWindow = (dispatch) => {
+    dispatch(activateModalWindow());
 };

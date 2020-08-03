@@ -1,4 +1,4 @@
-import { GET_ITEMS } from './constants';
+import { GET_ITEMS, ACTIVATE_MODAL_WINDOW } from './constants';
 
 export const getItems = (response) => ({
     type: GET_ITEMS,
@@ -8,5 +8,12 @@ export const getItems = (response) => ({
             price: value.price,
             imageUrl: '',
         })),
+    },
+});
+
+export const activateModalWindow = () => ({
+    type: ACTIVATE_MODAL_WINDOW,
+    payload: {
+        isModalWindowActive: true,
     },
 });

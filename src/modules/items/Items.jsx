@@ -8,11 +8,27 @@ export default class Items extends React.Component {
     }
 
     render() {
-        const { items } = this.props; //from reducer
+        const {
+            items,
+            onActivateModalWindow,
+            isModalWindowActive,
+        } = this.props; //from reducer
         return (
             <div>
                 <table>
                     <tbody>
+                        <div>
+                            <button onClick={onActivateModalWindow}>
+                                add item
+                            </button>
+                        </div>
+                        <div>
+                            {isModalWindowActive && (
+                                <React.Fragment>
+                                    <input placeholder="bla"></input>
+                                </React.Fragment>
+                            )}
+                        </div>
                         {items.map((value) => {
                             return (
                                 <div>
