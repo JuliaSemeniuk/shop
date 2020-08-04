@@ -6,6 +6,7 @@ export const getItems = (response) => ({
         items: response.map((value) => ({
             title: value.title,
             price: value.price,
+            id: value.id,
             imageUrl: '',
         })),
     },

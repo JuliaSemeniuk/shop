@@ -12,8 +12,10 @@ class ItemsContainer extends React.Component {
         this.props.modalWindow();
     };
 
+    onSet;
+
     render() {
-        const { items, isModalWindowActive } = this.props;
+        const { items, isModalWindowActive, id } = this.props;
         return (
             <Items
                 items={items}

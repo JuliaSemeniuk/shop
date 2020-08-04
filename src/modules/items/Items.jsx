@@ -15,44 +15,61 @@ export default class Items extends React.Component {
         } = this.props; //from reducer
         return (
             <div>
-                <table>
-                    <tbody>
-                        <div>
-                            <button onClick={onActivateModalWindow}>
-                                add item
-                            </button>
-                        </div>
-                        <div>
-                            {isModalWindowActive && (
-                                <React.Fragment>
-                                    <input placeholder="bla"></input>
-                                </React.Fragment>
-                            )}
-                        </div>
-                        {items.map((value) => {
-                            return (
+                <div>
+                    <div>
+                        <button onClick={onActivateModalWindow}>
+                            add item
+                        </button>
+                    </div>
+                    <div>
+                        {isModalWindowActive && (
+                            <React.Fragment>
+                                <form>
+                                    <input placeholder="title"></input>
+                                    <input placeholder="price"></input>
+                                    <input placeholder="image url"></input>
+                                    <p>in stock</p>
+                                    <input
+                                        type="radio"
+                                        name="inStockRadio"
+                                        value="yes"
+                                    />
+                                    Yes
+                                    <input
+                                        type="radio"
+                                        name="inStockRadio"
+                                        value="no"
+                                    />
+                                    No
+                                </form>
+                            </React.Fragment>
+                        )}
+                    </div>
+
+                    {items.map((value) => {
+                        console.log(value.id);
+                        return (
+                            <div key={value.id}>
                                 <div>
-                                    <div>
-                                        <img
-                                            src={
-                                                value.imageUrl
-                                                    ? value.imageUrl
-                                                    : DEFAULT_IMG_URL
-                                            }
-                                        />
-                                    </div>
-                                    <div class="itemTitle">{value.title}</div>
-                                    <div class="itemTitle">{value.price}</div>
-                                    <div class="itemTitle">
-                                        <button>
-                                            <ShoppingOutlined />
-                                        </button>
-                                    </div>
+                                    <img
+                                        src={
+                                            value.imageUrl
+                                                ? value.imageUrl
+                                                : DEFAULT_IMG_URL
+                                        }
+                                    />
                                 </div>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                                <div className="itemTitle">{value.title}</div>
+                                <div className="itemTitle">{value.price}</div>
+                                <div className="itemTitle">
+                                    <button>
+                                        <ShoppingOutlined />
+                                    </button>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         );
     }

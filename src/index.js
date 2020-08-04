@@ -7,7 +7,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './modules/items/reducer';
 
-const store = createStore(reducer);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //херня для хрома
+);
 
 ReactDOM.render(
     <Provider store={store}>
