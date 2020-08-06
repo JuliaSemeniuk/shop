@@ -4,6 +4,7 @@ import {
     newItemsTitle,
     newItemsPrice,
     newItemsImageUrl,
+    addNewItem,
 } from './actions';
 
 export const requestItems = (dispatch) => {
@@ -33,4 +34,26 @@ export const setNewItemsPrice = (event, dispatch) => {
 export const setNewItemsImageUrl = (event, dispatch) => {
     let newImageUrl = event.target.value;
     dispatch(newItemsImageUrl(newImageUrl));
+};
+
+export const setNewItem = (dispatch, title, price, imageUrl) => {
+    const params = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+        body: JSON.stringify({
+            title: title,
+            price: parseInt(price),
+            imageUrl: imageUrl,
+        }),
+    };
+
+    const promise = fetch(
+        'https://afternoon-woodland-11428.herokuapp.com/items',
+        params
+    )
+        .then((response) => response.json())
+        .then((response) => {
+            dispatch(addNewItem(response));
+        });
 };

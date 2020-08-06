@@ -4,6 +4,7 @@ import {
     NEW_TITLE,
     NEW_PRICE,
     NEW_IMAGE_URL,
+    ADD_NEW_ITEM,
 } from './constants';
 
 export const getItems = (response) => ({
@@ -43,5 +44,15 @@ export const newItemsImageUrl = (newImageUrl) => ({
     type: NEW_IMAGE_URL,
     payload: {
         imageUrl: newImageUrl,
+    },
+});
+
+export const addNewItem = (response) => ({
+    type: ADD_NEW_ITEM,
+    payload: {
+        title: response.title,
+        price: response.price,
+        imageUrl: response.imgUrl,
+        id: response.id,
     },
 });

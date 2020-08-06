@@ -4,6 +4,7 @@ import {
     NEW_TITLE,
     NEW_PRICE,
     NEW_IMAGE_URL,
+    ADD_NEW_ITEM,
 } from './constants';
 
 const initialState = {
@@ -20,6 +21,7 @@ const itemsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: action.payload.items,
+                isModalWindowActive: false,
             };
         }
 
@@ -49,6 +51,16 @@ const itemsReducer = (state = initialState, action) => {
                 ...state,
                 imageUrl: action.payload.imageUrl,
             };
+        }
+
+        case ADD_NEW_ITEM: {
+            const newItems = state.items.slice();
+            newItems.push({
+                title: action.payload.title,
+                price: action.payload.price,
+                imageUrl: action.payload.imgUrl,
+                id: action.payload.id,
+            });
         }
 
         default: {

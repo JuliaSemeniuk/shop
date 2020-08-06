@@ -5,3 +5,4 @@ export const ACTIVATE_MODAL_WINDOW = 'ACTIVATE_MODAL_WINDOW';
 export const NEW_TITLE = 'NEW_TITLE';
 export const NEW_PRICE = 'NEW_PRICE';
 export const NEW_IMAGE_URL = 'NEW_IMAGE_URL';
+export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';

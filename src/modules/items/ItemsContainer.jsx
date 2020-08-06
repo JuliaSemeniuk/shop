@@ -7,6 +7,7 @@ import {
     setNewItemsTitle,
     setNewItemsPrice,
     setNewItemsImageUrl,
+    setNewItem,
 } from './utils';
 
 class ItemsContainer extends React.Component {
@@ -30,6 +31,14 @@ class ItemsContainer extends React.Component {
         this.props.setNewItemsImageUrl(event);
     };
 
+    onSetNewItem = () => {
+        this.props.setNewItem(
+            this.props.title,
+            this.props.price,
+            this.props.imageUrl
+        );
+    };
+
     render() {
         const { items, isModalWindowActive } = this.props;
         return (
@@ -40,6 +49,7 @@ class ItemsContainer extends React.Component {
                 onSetNewItemsTitle={this.onSetNewItemsTitle}
                 onSetNewItemsPrice={this.onSetNewItemsPrice}
                 onSetNewItemsImageUrl={this.onSetNewItemsImageUrl}
+                onSetNewItem={this.onSetNewItem}
             />
         );
     }
@@ -50,6 +60,9 @@ const mapStateToProps = (store) => {
     return {
         items: store.items,
         isModalWindowActive: store.isModalWindowActive,
+        title: store.title,
+        price: store.price,
+        imageUrl: store.imageUrl,
     };
 };
 
@@ -60,6 +73,8 @@ const mapDispatchToProps = (dispatch) => {
         setNewItemsTitle: (event) => setNewItemsTitle(event, dispatch),
         setNewItemsPrice: (event) => setNewItemsPrice(event, dispatch),
         setNewItemsImageUrl: (event) => setNewItemsImageUrl(event, dispatch),
+        setNewItem: (title, price, imageUrl) =>
+            setNewItem(dispatch, title, price, imageUrl),
     };
 };
 

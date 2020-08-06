@@ -15,6 +15,7 @@ export default class Items extends React.Component {
             onSetNewItemsTitle,
             onSetNewItemsPrice,
             onSetNewItemsImageUrl,
+            onSetNewItem,
         } = this.props; //from reducer
         return (
             <div>
@@ -53,7 +54,11 @@ export default class Items extends React.Component {
                                         value="no"
                                     />
                                     No
-                                    <input type="button" value="add" />
+                                    <input
+                                        type="button"
+                                        value="add"
+                                        onClick={onSetNewItem}
+                                    />
                                 </form>
                             </React.Fragment>
                         )}
