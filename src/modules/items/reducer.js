@@ -1,8 +1,9 @@
-import { GET_ITEMS, ACTIVATE_MODAL_WINDOW } from './constants';
+import { GET_ITEMS, ACTIVATE_MODAL_WINDOW, NEW_TITLE } from './constants';
 
 const initialState = {
     items: [],
     isModalWindowActive: false,
+    title: '',
 };
 
 const itemsReducer = (state = initialState, action) => {
@@ -20,6 +21,14 @@ const itemsReducer = (state = initialState, action) => {
                 isModalWindowActive: action.payload.isModalWindowActive,
             };
         }
+
+        case NEW_TITLE: {
+            return {
+                ...state,
+                title: action.payload.title,
+            };
+        }
+
         default: {
             return state;
         } //state = initialState - initialisation of state at first time

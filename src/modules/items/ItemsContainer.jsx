@@ -1,7 +1,7 @@
 import React from 'react';
 import Items from './Items';
 import { connect } from 'react-redux';
-import { requestItems, modalWindow } from './utils';
+import { requestItems, modalWindow, setNewItemsTitle } from './utils';
 
 class ItemsContainer extends React.Component {
     componentDidMount() {
@@ -12,15 +12,18 @@ class ItemsContainer extends React.Component {
         this.props.modalWindow();
     };
 
-    onSet;
+    onSetNewItemsTitle = (event) => {
+        this.props.setNewItemsTitle(event);
+    };
 
     render() {
-        const { items, isModalWindowActive, id } = this.props;
+        const { items, isModalWindowActive } = this.props;
         return (
             <Items
                 items={items}
                 isModalWindowActive={isModalWindowActive}
                 onActivateModalWindow={this.onActivateModalWindow}
+                onSetNewItemsTitle={this.onSetNewItemsTitle}
             />
         );
     }
@@ -38,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         requestItems: () => requestItems(dispatch),
         modalWindow: () => modalWindow(dispatch),
+        setNewItemsTitle: (event) => setNewItemsTitle(event, dispatch),
     };
 };
 

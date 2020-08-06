@@ -1,4 +1,4 @@
-import { GET_ITEMS, ACTIVATE_MODAL_WINDOW } from './constants';
+import { GET_ITEMS, ACTIVATE_MODAL_WINDOW, NEW_TITLE } from './constants';
 
 export const getItems = (response) => ({
     type: GET_ITEMS,
@@ -16,5 +16,12 @@ export const activateModalWindow = () => ({
     type: ACTIVATE_MODAL_WINDOW,
     payload: {
         isModalWindowActive: true,
+    },
+});
+
+export const newItemsTitle = (newTitle) => ({
+    type: NEW_TITLE,
+    payload: {
+        title: newTitle,
     },
 });
