@@ -1,9 +1,17 @@
-import { GET_ITEMS, ACTIVATE_MODAL_WINDOW, NEW_TITLE } from './constants';
+import {
+    GET_ITEMS,
+    ACTIVATE_MODAL_WINDOW,
+    NEW_TITLE,
+    NEW_PRICE,
+    NEW_IMAGE_URL,
+} from './constants';
 
 const initialState = {
     items: [],
     isModalWindowActive: false,
     title: '',
+    price: '',
+    imageUrl: '',
 };
 
 const itemsReducer = (state = initialState, action) => {
@@ -26,6 +34,20 @@ const itemsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 title: action.payload.title,
+            };
+        }
+
+        case NEW_PRICE: {
+            return {
+                ...state,
+                price: action.payload.price,
+            };
+        }
+
+        case NEW_IMAGE_URL: {
+            return {
+                ...state,
+                imageUrl: action.payload.imageUrl,
             };
         }
 

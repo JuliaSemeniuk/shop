@@ -1,4 +1,10 @@
-import { getItems, activateModalWindow, newItemsTitle } from './actions';
+import {
+    getItems,
+    activateModalWindow,
+    newItemsTitle,
+    newItemsPrice,
+    newItemsImageUrl,
+} from './actions';
 
 export const requestItems = (dispatch) => {
     fetch(
@@ -17,4 +23,14 @@ export const modalWindow = (dispatch) => {
 export const setNewItemsTitle = (event, dispatch) => {
     let newTitle = event.target.value;
     dispatch(newItemsTitle(newTitle));
+};
+
+export const setNewItemsPrice = (event, dispatch) => {
+    let newPrice = event.target.value;
+    dispatch(newItemsPrice(newPrice));
+};
+
+export const setNewItemsImageUrl = (event, dispatch) => {
+    let newImageUrl = event.target.value;
+    dispatch(newItemsImageUrl(newImageUrl));
 };

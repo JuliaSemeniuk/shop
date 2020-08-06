@@ -13,6 +13,8 @@ export default class Items extends React.Component {
             onActivateModalWindow,
             isModalWindowActive,
             onSetNewItemsTitle,
+            onSetNewItemsPrice,
+            onSetNewItemsImageUrl,
         } = this.props; //from reducer
         return (
             <div>
@@ -30,8 +32,14 @@ export default class Items extends React.Component {
                                         placeholder="title"
                                         onChange={onSetNewItemsTitle}
                                     ></input>
-                                    <input placeholder="price"></input>
-                                    <input placeholder="image url"></input>
+                                    <input
+                                        placeholder="price"
+                                        onChange={onSetNewItemsPrice}
+                                    ></input>
+                                    <input
+                                        placeholder="image url"
+                                        onChange={onSetNewItemsImageUrl}
+                                    ></input>
                                     <p>in stock</p>
                                     <input
                                         type="radio"

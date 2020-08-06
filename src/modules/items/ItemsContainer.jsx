@@ -1,7 +1,13 @@
 import React from 'react';
 import Items from './Items';
 import { connect } from 'react-redux';
-import { requestItems, modalWindow, setNewItemsTitle } from './utils';
+import {
+    requestItems,
+    modalWindow,
+    setNewItemsTitle,
+    setNewItemsPrice,
+    setNewItemsImageUrl,
+} from './utils';
 
 class ItemsContainer extends React.Component {
     componentDidMount() {
@@ -16,6 +22,14 @@ class ItemsContainer extends React.Component {
         this.props.setNewItemsTitle(event);
     };
 
+    onSetNewItemsPrice = (event) => {
+        this.props.setNewItemsPrice(event);
+    };
+
+    onSetNewItemsImageUrl = (event) => {
+        this.props.setNewItemsImageUrl(event);
+    };
+
     render() {
         const { items, isModalWindowActive } = this.props;
         return (
@@ -24,6 +38,8 @@ class ItemsContainer extends React.Component {
                 isModalWindowActive={isModalWindowActive}
                 onActivateModalWindow={this.onActivateModalWindow}
                 onSetNewItemsTitle={this.onSetNewItemsTitle}
+                onSetNewItemsPrice={this.onSetNewItemsPrice}
+                onSetNewItemsImageUrl={this.onSetNewItemsImageUrl}
             />
         );
     }
@@ -42,6 +58,8 @@ const mapDispatchToProps = (dispatch) => {
         requestItems: () => requestItems(dispatch),
         modalWindow: () => modalWindow(dispatch),
         setNewItemsTitle: (event) => setNewItemsTitle(event, dispatch),
+        setNewItemsPrice: (event) => setNewItemsPrice(event, dispatch),
+        setNewItemsImageUrl: (event) => setNewItemsImageUrl(event, dispatch),
     };
 };
 
