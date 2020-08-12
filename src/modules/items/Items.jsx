@@ -113,9 +113,8 @@ export default class Items extends React.Component {
                                                 <ShoppingOutlined />
                                             </button>
                                             <button
-                                                onClick={() =>
-                                                    onDeleteItem(value.id)
-                                                }
+                                                id={value.id}
+                                                onClick={onDeleteItem}
                                             >
                                                 delete
                                             </button>

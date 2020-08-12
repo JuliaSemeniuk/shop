@@ -45,9 +45,9 @@ class ItemsContainer extends React.Component {
         this.props.deactivateModalWindow();
     };
 
-    onDeleteItem = (id) => {
-        console.log('id:', id);
-        this.props.deleteItem(id, this.props.items);
+    onDeleteItem = (event) => {
+        console.log('id:', event.target.id);
+        this.props.deleteItem(+event.target.id, this.props.items); //+привести до Number, бо в івент потрапляє строка
     };
 
     render() {
