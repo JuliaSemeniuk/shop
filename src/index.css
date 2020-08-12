@@ -17,7 +17,17 @@ code {
     height: 103px;
 }
 
-.item {
-    position: relative;
-    float: left;
+.containerImage {
+    display: flex;
+    justify-content: center;
+}
+
+.containerPrice {
+    display: flex;
+    justify-content: center;
+}
+
+.containerButtons {
+    display: flex;
+    justify-content: space-between;
 }

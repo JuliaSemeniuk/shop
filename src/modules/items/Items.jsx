@@ -93,7 +93,7 @@ export default class Items extends React.Component {
                             <List.Item>
                                 <Card title={value.title}>
                                     <div className="item" key={value.id}>
-                                        <div>
+                                        <div className="containerImage">
                                             <img
                                                 className="itemImg"
                                                 src={
@@ -103,14 +103,13 @@ export default class Items extends React.Component {
                                                 }
                                             />
                                         </div>
-
-                                        <div>{value.price}</div>
-                                        <div>
+                                        <div className="containerPrice">
+                                            ${value.price}
+                                        </div>
+                                        <div className="containerButtons">
                                             <button>
                                                 <ShoppingOutlined />
                                             </button>
-                                        </div>
-                                        <div>
                                             <button>delete</button>
                                         </div>
                                     </div>
