@@ -6,6 +6,7 @@ import {
     NEW_IMAGE_URL,
     ADD_NEW_ITEM,
     CLOSE_MODAL_WINDOW,
+    DELETE_ITEM,
 } from './constants';
 
 export const getItems = (response) => ({
@@ -62,5 +63,12 @@ export const closeModalWindow = () => ({
     type: CLOSE_MODAL_WINDOW,
     payload: {
         isModalWindowActive: false,
+    },
+});
+
+export const delItem = (newItems) => ({
+    type: DELETE_ITEM,
+    payload: {
+        items: newItems,
     },
 });

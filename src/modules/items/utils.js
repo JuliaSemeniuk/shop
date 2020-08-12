@@ -6,6 +6,7 @@ import {
     newItemsImageUrl,
     addNewItem,
     closeModalWindow,
+    delItem,
 } from './actions';
 
 export const requestItems = (dispatch) => {
@@ -61,4 +62,18 @@ export const setNewItem = (dispatch, title, price, imageUrl) => {
 
 export const deactivateModalWindow = (dispatch) => {
     dispatch(closeModalWindow());
+};
+
+export const deleteItem = (dispatch, id, items) => {
+    fetch('https://afternoon-woodland-11428.herokuapp.com/items/' + id, {
+        method: 'DELETE',
+        mode: 'cors',
+    })
+        .then((response) => response.json())
+        .then(() => {
+            const index = items.findIndex((item) => item.id === id);
+            const newItems = items.slice();
+            newItems.splice(index, 1);
+            dispatch(delItem(newItems));
+        });
 };

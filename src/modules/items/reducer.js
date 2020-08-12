@@ -6,6 +6,7 @@ import {
     NEW_IMAGE_URL,
     ADD_NEW_ITEM,
     CLOSE_MODAL_WINDOW,
+    DELETE_ITEM,
 } from './constants';
 
 const initialState = {
@@ -78,6 +79,13 @@ const itemsReducer = (state = initialState, action) => {
                 price: '',
                 imageUrl: '',
                 isModalWindowActive: action.payload.isModalWindowActive,
+            };
+        }
+
+        case DELETE_ITEM: {
+            return {
+                ...state,
+                items: action.payload.items,
             };
         }
 

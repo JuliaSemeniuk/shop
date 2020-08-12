@@ -9,6 +9,7 @@ import {
     setNewItemsImageUrl,
     setNewItem,
     deactivateModalWindow,
+    deleteItem,
 } from './utils';
 
 class ItemsContainer extends React.Component {
@@ -44,6 +45,11 @@ class ItemsContainer extends React.Component {
         this.props.deactivateModalWindow();
     };
 
+    onDeleteItem = (id) => {
+        console.log('id:', id);
+        this.props.deleteItem(id, this.props.items);
+    };
+
     render() {
         const {
             items,
@@ -65,6 +71,7 @@ class ItemsContainer extends React.Component {
                 price={price}
                 imageUrl={imageUrl}
                 onDeactivateModalWindow={this.onDeactivateModalWindow}
+                onDeleteItem={this.onDeleteItem}
             />
         );
     }
@@ -91,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
         setNewItem: (title, price, imageUrl) =>
             setNewItem(dispatch, title, price, imageUrl),
         deactivateModalWindow: () => deactivateModalWindow(dispatch),
+        deleteItem: (id, items) => deleteItem(dispatch, id, items),
     };
 };
 

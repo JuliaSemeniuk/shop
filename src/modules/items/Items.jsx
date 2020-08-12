@@ -21,12 +21,14 @@ export default class Items extends React.Component {
             price,
             imageUrl,
             onDeactivateModalWindow,
+            onDeleteItem,
         } = this.props; //from reducer
 
         const data = items.map((value) => ({
             title: value.title,
             price: value.price,
             imageUrl: value.imageUrl,
+            id: value.id,
         }));
 
         console.log(('data', data));
@@ -110,22 +112,19 @@ export default class Items extends React.Component {
                                             <button>
                                                 <ShoppingOutlined />
                                             </button>
-                                            <button>delete</button>
+                                            <button
+                                                onClick={() =>
+                                                    onDeleteItem(value.id)
+                                                }
+                                            >
+                                                delete
+                                            </button>
                                         </div>
                                     </div>
                                 </Card>
                             </List.Item>
                         )}
                     />
-
-                    {/* {items.map((value) => {
-                        console.log(value.id);
-                        return (
-                            
-
-                            
-                        );
-                    })} */}
                 </div>
             </div>
         );
