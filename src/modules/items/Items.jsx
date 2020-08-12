@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShoppingOutlined } from '@ant-design/icons';
 import { DEFAULT_IMG_URL } from './constants';
+import { List, Card } from 'antd';
 
 export default class Items extends React.Component {
     constructor(props) {
@@ -21,6 +22,15 @@ export default class Items extends React.Component {
             imageUrl,
             onDeactivateModalWindow,
         } = this.props; //from reducer
+
+        const data = items.map((value) => ({
+            title: value.title,
+            price: value.price,
+            imageUrl: value.imageUrl,
+        }));
+
+        console.log(('data', data));
+
         return (
             <div>
                 <div>
@@ -76,29 +86,47 @@ export default class Items extends React.Component {
                         )}
                     </div>
 
-                    {items.map((value) => {
+                    <List
+                        grid={{ gutter: 16, column: 4 }}
+                        dataSource={data}
+                        renderItem={(value) => (
+                            <List.Item>
+                                <Card title={value.title}>
+                                    <div className="item" key={value.id}>
+                                        <div>
+                                            <img
+                                                className="itemImg"
+                                                src={
+                                                    value.imageUrl
+                                                        ? value.imageUrl
+                                                        : DEFAULT_IMG_URL
+                                                }
+                                            />
+                                        </div>
+
+                                        <div>{value.price}</div>
+                                        <div>
+                                            <button>
+                                                <ShoppingOutlined />
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button>delete</button>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </List.Item>
+                        )}
+                    />
+
+                    {/* {items.map((value) => {
                         console.log(value.id);
                         return (
-                            <div key={value.id}>
-                                <div>
-                                    <img
-                                        src={
-                                            value.imageUrl
-                                                ? value.imageUrl
-                                                : DEFAULT_IMG_URL
-                                        }
-                                    />
-                                </div>
-                                <div className="itemTitle">{value.title}</div>
-                                <div className="itemTitle">{value.price}</div>
-                                <div className="itemTitle">
-                                    <button>
-                                        <ShoppingOutlined />
-                                    </button>
-                                </div>
-                            </div>
+                            
+
+                            
                         );
-                    })}
+                    })} */}
                 </div>
             </div>
         );

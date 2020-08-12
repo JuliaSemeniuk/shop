@@ -12,11 +12,12 @@ code {
         monospace;
 }
 
-.itemTitle {
-    text-align: center;
+.itemImg {
+    width: 115px;
+    height: 103px;
 }
 
-.itemImg {
-    width: 237px;
-    height: 213px;
+.item {
+    position: relative;
+    float: left;
 }
