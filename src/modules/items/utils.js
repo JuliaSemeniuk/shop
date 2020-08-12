@@ -5,6 +5,7 @@ import {
     newItemsPrice,
     newItemsImageUrl,
     addNewItem,
+    closeModalWindow,
 } from './actions';
 
 export const requestItems = (dispatch) => {
@@ -56,4 +57,8 @@ export const setNewItem = (dispatch, title, price, imageUrl) => {
         .then((response) => {
             dispatch(addNewItem(response));
         });
+};
+
+export const deactivateModalWindow = (dispatch) => {
+    dispatch(closeModalWindow());
 };

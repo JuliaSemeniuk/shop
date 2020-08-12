@@ -6,3 +6,4 @@ export const NEW_TITLE = 'NEW_TITLE';
 export const NEW_PRICE = 'NEW_PRICE';
 export const NEW_IMAGE_URL = 'NEW_IMAGE_URL';
 export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';
+export const CLOSE_MODAL_WINDOW = 'CLOSE_MODAL_WINDOW';

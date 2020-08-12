@@ -19,6 +19,7 @@ export default class Items extends React.Component {
             title,
             price,
             imageUrl,
+            onDeactivateModalWindow,
         } = this.props; //from reducer
         return (
             <div>
@@ -64,6 +65,11 @@ export default class Items extends React.Component {
                                         type="button"
                                         value="add"
                                         onClick={onSetNewItem}
+                                    />
+                                    <input
+                                        type="button"
+                                        value="cancel"
+                                        onClick={onDeactivateModalWindow}
                                     />
                                 </form>
                             </React.Fragment>

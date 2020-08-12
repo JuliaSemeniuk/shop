@@ -5,6 +5,7 @@ import {
     NEW_PRICE,
     NEW_IMAGE_URL,
     ADD_NEW_ITEM,
+    CLOSE_MODAL_WINDOW,
 } from './constants';
 
 export const getItems = (response) => ({
@@ -54,5 +55,12 @@ export const addNewItem = (response) => ({
         price: response.price,
         imageUrl: response.imgUrl,
         id: response.id,
+    },
+});
+
+export const closeModalWindow = () => ({
+    type: CLOSE_MODAL_WINDOW,
+    payload: {
+        isModalWindowActive: false,
     },
 });

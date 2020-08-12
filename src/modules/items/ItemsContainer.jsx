@@ -8,6 +8,7 @@ import {
     setNewItemsPrice,
     setNewItemsImageUrl,
     setNewItem,
+    deactivateModalWindow,
 } from './utils';
 
 class ItemsContainer extends React.Component {
@@ -39,6 +40,10 @@ class ItemsContainer extends React.Component {
         );
     };
 
+    onDeactivateModalWindow = () => {
+        this.props.deactivateModalWindow();
+    };
+
     render() {
         const {
             items,
@@ -59,6 +64,7 @@ class ItemsContainer extends React.Component {
                 title={title}
                 price={price}
                 imageUrl={imageUrl}
+                onDeactivateModalWindow={this.onDeactivateModalWindow}
             />
         );
     }
@@ -84,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
         setNewItemsImageUrl: (event) => setNewItemsImageUrl(event, dispatch),
         setNewItem: (title, price, imageUrl) =>
             setNewItem(dispatch, title, price, imageUrl),
+        deactivateModalWindow: () => deactivateModalWindow(dispatch),
     };
 };
 
