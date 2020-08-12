@@ -9,7 +9,7 @@ import {
 
 export const requestItems = (dispatch) => {
     fetch(
-        'https://afternoon-woodland-11428.herokuapp.com/items?offset=0&limit=5'
+        'https://afternoon-woodland-11428.herokuapp.com/items?offset=0&limit=100'
     )
         .then((response) => response.json())
         .then((response) => {

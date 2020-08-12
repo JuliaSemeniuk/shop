@@ -16,6 +16,9 @@ export default class Items extends React.Component {
             onSetNewItemsPrice,
             onSetNewItemsImageUrl,
             onSetNewItem,
+            title,
+            price,
+            imageUrl,
         } = this.props; //from reducer
         return (
             <div>
@@ -31,16 +34,19 @@ export default class Items extends React.Component {
                                 <form>
                                     <input
                                         placeholder="title"
+                                        value={title}
                                         onChange={onSetNewItemsTitle}
-                                    ></input>
+                                    />
                                     <input
                                         placeholder="price"
+                                        value={price}
                                         onChange={onSetNewItemsPrice}
-                                    ></input>
+                                    />
                                     <input
                                         placeholder="image url"
+                                        value={imageUrl}
                                         onChange={onSetNewItemsImageUrl}
-                                    ></input>
+                                    />
                                     <p>in stock</p>
                                     <input
                                         type="radio"

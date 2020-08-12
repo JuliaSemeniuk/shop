@@ -61,6 +61,13 @@ const itemsReducer = (state = initialState, action) => {
                 imageUrl: action.payload.imgUrl,
                 id: action.payload.id,
             });
+            return {
+                ...state,
+                items: newItems,
+                title: '',
+                price: '',
+                imageUrl: '',
+            };
         }
 
         default: {

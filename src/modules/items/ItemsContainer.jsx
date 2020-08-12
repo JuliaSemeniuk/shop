@@ -40,7 +40,13 @@ class ItemsContainer extends React.Component {
     };
 
     render() {
-        const { items, isModalWindowActive } = this.props;
+        const {
+            items,
+            isModalWindowActive,
+            title,
+            price,
+            imageUrl,
+        } = this.props;
         return (
             <Items
                 items={items}
@@ -50,6 +56,9 @@ class ItemsContainer extends React.Component {
                 onSetNewItemsPrice={this.onSetNewItemsPrice}
                 onSetNewItemsImageUrl={this.onSetNewItemsImageUrl}
                 onSetNewItem={this.onSetNewItem}
+                title={title}
+                price={price}
+                imageUrl={imageUrl}
             />
         );
     }
