@@ -10,6 +10,8 @@ import {
     setNewItem,
     deactivateModalWindow,
     deleteItem,
+    editItem,
+    updateItem,
 } from './utils';
 
 class ItemsContainer extends React.Component {
@@ -50,6 +52,20 @@ class ItemsContainer extends React.Component {
         this.props.deleteItem(+event.target.id, this.props.items); //+привести до Number, бо в івент потрапляє строка
     };
 
+    onEditItem = (event) => {
+        this.props.editItem(+event.target.id, this.props.items);
+    };
+
+    onUpdateItem = (event) => {
+        this.props.updateItem(
+            this.props.items,
+            this.props.title,
+            this.props.price,
+            this.props.imageUrl,
+            this.props.editedItem
+        );
+    };
+
     render() {
         const {
             items,
@@ -57,6 +73,7 @@ class ItemsContainer extends React.Component {
             title,
             price,
             imageUrl,
+            editedItem,
         } = this.props;
         return (
             <Items
@@ -72,6 +89,9 @@ class ItemsContainer extends React.Component {
                 imageUrl={imageUrl}
                 onDeactivateModalWindow={this.onDeactivateModalWindow}
                 onDeleteItem={this.onDeleteItem}
+                onEditItem={this.onEditItem}
+                onUpdateItem={this.onUpdateItem}
+                editedItem={editedItem}
             />
         );
     }
@@ -85,6 +105,7 @@ const mapStateToProps = (store) => {
         title: store.title,
         price: store.price,
         imageUrl: store.imageUrl,
+        editedItem: store.editedItem,
     };
 };
 
@@ -99,6 +120,9 @@ const mapDispatchToProps = (dispatch) => {
             setNewItem(dispatch, title, price, imageUrl),
         deactivateModalWindow: () => deactivateModalWindow(dispatch),
         deleteItem: (id, items) => deleteItem(dispatch, id, items),
+        editItem: (id, items) => editItem(dispatch, id, items),
+        updateItem: (items, title, price, imageUrl, editedItem) =>
+            updateItem(dispatch, items, title, price, imageUrl, editedItem),
     };
 };
 

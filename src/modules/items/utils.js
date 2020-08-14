@@ -7,6 +7,8 @@ import {
     addNewItem,
     closeModalWindow,
     delItem,
+    actionEditItem,
+    actionUpdateItem,
 } from './actions';
 
 export const requestItems = (dispatch) => {
@@ -76,4 +78,50 @@ export const deleteItem = (dispatch, id, items) => {
             newItems.splice(index, 1);
             dispatch(delItem(newItems));
         });
+};
+
+export const editItem = (dispatch, id, items) => {
+    const currentItem = items.find((item) => item.id === id);
+    console.log('current item:', currentItem);
+    dispatch(actionEditItem(currentItem, id));
+};
+
+export const updateItem = (
+    dispatch,
+
+    items,
+    title,
+    price,
+    imageUrl,
+    editedItem
+) => {
+    fetch(
+        'https://afternoon-woodland-11428.herokuapp.com/items/' + editedItem,
+        {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'cors',
+            body: JSON.stringify({
+                title: title,
+                price: parseInt(price),
+                imageUrl: imageUrl,
+            }),
+        }
+    )
+        .then((response) => response.json())
+        .then(() => {
+            const newItems = items.slice();
+            const index = items.findIndex(
+                (item) => item.editedItem === editedItem
+            );
+            newItems[index] = {
+                id: editedItem,
+                title: title,
+                price: parseInt(price),
+                imageUrl: imageUrl,
+            };
+            dispatch(actionUpdateItem(newItems));
+        });
+
+    console.log('edite item: ', editedItem);
 };

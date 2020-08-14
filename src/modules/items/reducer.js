@@ -7,6 +7,8 @@ import {
     ADD_NEW_ITEM,
     CLOSE_MODAL_WINDOW,
     DELETE_ITEM,
+    EDIT_ITEM,
+    UPDATE_ITEM,
 } from './constants';
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
     title: '',
     price: '',
     imageUrl: '',
+    editedItem: null,
 };
 
 const itemsReducer = (state = initialState, action) => {
@@ -86,6 +89,26 @@ const itemsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: action.payload.items,
+            };
+        }
+
+        case EDIT_ITEM: {
+            return {
+                ...state,
+                title: action.payload.title,
+                price: action.payload.price,
+                imageUrl: action.payload.imgUrl,
+                editedItem: action.payload.id,
+                isModalWindowActive: true,
+            };
+        }
+
+        case UPDATE_ITEM: {
+            return {
+                ...state,
+                items: action.payload.items,
+                editedItem: action.payload.editedItem,
+                isModalWindowActive: action.payload.isModalWindowActive,
             };
         }
 

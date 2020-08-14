@@ -8,3 +8,5 @@ export const NEW_IMAGE_URL = 'NEW_IMAGE_URL';
 export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';
 export const CLOSE_MODAL_WINDOW = 'CLOSE_MODAL_WINDOW';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const EDIT_ITEM = 'EDIT_ITEM';
+export const UPDATE_ITEM = 'UPDATE_ITEM';

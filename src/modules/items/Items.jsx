@@ -22,6 +22,9 @@ export default class Items extends React.Component {
             imageUrl,
             onDeactivateModalWindow,
             onDeleteItem,
+            onEditItem,
+            onUpdateItem,
+            editedItem,
         } = this.props; //from reducer
 
         const data = items.map((value) => ({
@@ -32,6 +35,7 @@ export default class Items extends React.Component {
         }));
 
         console.log(('data', data));
+        console.log('edited item: ', editedItem);
 
         return (
             <div>
@@ -73,16 +77,22 @@ export default class Items extends React.Component {
                                         value="no"
                                     />
                                     No
-                                    <input
-                                        type="button"
-                                        value="add"
-                                        onClick={onSetNewItem}
-                                    />
-                                    <input
-                                        type="button"
-                                        value="cancel"
-                                        onClick={onDeactivateModalWindow}
-                                    />
+                                    <div>
+                                        <input
+                                            type="button"
+                                            value="add"
+                                            onClick={
+                                                editedItem
+                                                    ? onUpdateItem
+                                                    : onSetNewItem
+                                            }
+                                        />
+                                        <input
+                                            type="button"
+                                            value="cancel"
+                                            onClick={onDeactivateModalWindow}
+                                        />
+                                    </div>
                                 </form>
                             </React.Fragment>
                         )}
@@ -117,6 +127,12 @@ export default class Items extends React.Component {
                                                 onClick={onDeleteItem}
                                             >
                                                 delete
+                                            </button>
+                                            <button
+                                                id={value.id}
+                                                onClick={onEditItem}
+                                            >
+                                                edit
                                             </button>
                                         </div>
                                     </div>

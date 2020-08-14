@@ -7,6 +7,8 @@ import {
     ADD_NEW_ITEM,
     CLOSE_MODAL_WINDOW,
     DELETE_ITEM,
+    EDIT_ITEM,
+    UPDATE_ITEM,
 } from './constants';
 
 export const getItems = (response) => ({
@@ -72,3 +74,28 @@ export const delItem = (newItems) => ({
         items: newItems,
     },
 });
+
+export const actionEditItem = (currentItem, id) => {
+    console.log('key: ', currentItem);
+    return {
+        type: EDIT_ITEM,
+        payload: {
+            id,
+            title: currentItem.title,
+            price: currentItem.price,
+            imageUrl: currentItem.imgUrl,
+            isModalWindowActive: true,
+        },
+    };
+};
+
+export const actionUpdateItem = (newItems) => {
+    return {
+        type: UPDATE_ITEM,
+        payload: {
+            items: newItems,
+            isModalWindowActive: false,
+            editedItem: null,
+        },
+    };
+};
