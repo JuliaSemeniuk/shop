@@ -14,9 +14,11 @@ import {
     updateItem,
 } from './utils';
 
+import { ITEMS_PER_PAGE } from './constants';
+
 class ItemsContainer extends React.Component {
     componentDidMount() {
-        this.props.requestItems();
+        this.props.requestItems(0, ITEMS_PER_PAGE);
     }
 
     onActivateModalWindow = () => {
@@ -74,6 +76,7 @@ class ItemsContainer extends React.Component {
             price,
             imageUrl,
             editedItem,
+            count,
         } = this.props;
         return (
             <Items
@@ -92,6 +95,7 @@ class ItemsContainer extends React.Component {
                 onEditItem={this.onEditItem}
                 onUpdateItem={this.onUpdateItem}
                 editedItem={editedItem}
+                count={count}
             />
         );
     }
@@ -106,12 +110,13 @@ const mapStateToProps = (store) => {
         price: store.price,
         imageUrl: store.imageUrl,
         editedItem: store.editedItem,
+        count: store.count,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        requestItems: () => requestItems(dispatch),
+        requestItems: (offset, limit) => requestItems(dispatch, offset, limit),
         modalWindow: () => modalWindow(dispatch),
         setNewItemsTitle: (event) => setNewItemsTitle(event, dispatch),
         setNewItemsPrice: (event) => setNewItemsPrice(event, dispatch),

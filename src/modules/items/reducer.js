@@ -13,6 +13,7 @@ import {
 
 const initialState = {
     items: [],
+    count: 0,
     isModalWindowActive: false,
     title: '',
     price: '',
@@ -26,6 +27,7 @@ const itemsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: action.payload.items,
+                count: action.payload.count,
                 isModalWindowActive: false,
             };
         }

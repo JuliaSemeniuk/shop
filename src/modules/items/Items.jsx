@@ -1,12 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { ShoppingOutlined } from '@ant-design/icons';
-import { DEFAULT_IMG_URL } from './constants';
+import { DEFAULT_IMG_URL, ITEMS_PER_PAGE } from './constants';
 import { List, Card } from 'antd';
 
-export default class Items extends React.Component {
+class Items extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    onChangePage = (page) => {
+        this.props.history.push(`?page=${page}`);
+    };
 
     render() {
         const {
@@ -25,7 +30,9 @@ export default class Items extends React.Component {
             onEditItem,
             onUpdateItem,
             editedItem,
+            count,
         } = this.props; //from reducer
+        console.log('this.pros: ', this.props);
 
         const data = items.map((value) => ({
             title: value.title,
@@ -33,6 +40,16 @@ export default class Items extends React.Component {
             imageUrl: value.imageUrl,
             id: value.id,
         }));
+
+        const pagesCount = Math.ceil(count / ITEMS_PER_PAGE);
+        console.log('pagesCount: ', pagesCount);
+        const pagesList = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pagesList.push(i);
+        }
+
+        console.log('pagesList: ', pagesList);
 
         console.log(('data', data));
         console.log('edited item: ', editedItem);
@@ -97,7 +114,6 @@ export default class Items extends React.Component {
                             </React.Fragment>
                         )}
                     </div>
-
                     <List
                         grid={{ gutter: 16, column: 4 }}
                         dataSource={data}
@@ -140,8 +156,15 @@ export default class Items extends React.Component {
                             </List.Item>
                         )}
                     />
+                    {pagesList.map((pageNum) => (
+                        <span onClick={() => this.onChangePage(pageNum)}>
+                            {pageNum}
+                        </span>
+                    ))}
                 </div>
             </div>
         );
     }
 }
+
+export default withRouter(Items);

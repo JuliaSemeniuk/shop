@@ -11,13 +11,18 @@ import {
     actionUpdateItem,
 } from './actions';
 
-export const requestItems = (dispatch) => {
-    fetch(
-        'https://afternoon-woodland-11428.herokuapp.com/items?offset=0&limit=100'
-    )
-        .then((response) => response.json())
+import { BASIC_URL } from './constants';
+
+//`fjfjfjh${a}`
+
+export const requestItems = (dispatch, offset, limit) => {
+    fetch(`${BASIC_URL}?offset=${offset}&limit=${limit}`)
         .then((response) => {
-            dispatch(getItems(response));
+            console.log('response: ', response);
+            return response.json();
+        })
+        .then((response) => {
+            dispatch(getItems(response.items, response.count)); //chrome/network/preview/items as an obj
         });
 };
 

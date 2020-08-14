@@ -10,3 +10,7 @@ export const CLOSE_MODAL_WINDOW = 'CLOSE_MODAL_WINDOW';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const EDIT_ITEM = 'EDIT_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
+
+export const BASIC_URL = 'https://afternoon-woodland-11428.herokuapp.com/items';
+
+export const ITEMS_PER_PAGE = 3;

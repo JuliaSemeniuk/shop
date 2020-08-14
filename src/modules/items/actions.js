@@ -11,15 +11,16 @@ import {
     UPDATE_ITEM,
 } from './constants';
 
-export const getItems = (response) => ({
+export const getItems = (items, count) => ({
     type: GET_ITEMS,
     payload: {
-        items: response.map((value) => ({
+        items: items.map((value) => ({
             title: value.title,
             price: value.price,
             id: value.id,
             imageUrl: '',
         })),
+        count: count,
     },
 });
 
