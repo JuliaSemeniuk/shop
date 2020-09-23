@@ -9,6 +9,19 @@ class Items extends React.Component {
         super(props);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location.search !== this.props.location.search) {
+            let pageNumber = parseInt(
+                nextProps.location.search.replace('?page=', '')
+            );
+
+            this.props.requestItems(
+                (pageNumber - 1) * ITEMS_PER_PAGE,
+                ITEMS_PER_PAGE
+            );
+        }
+    }
+
     onChangePage = (page) => {
         this.props.history.push(`?page=${page}`);
     };

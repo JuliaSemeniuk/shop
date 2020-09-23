@@ -96,6 +96,7 @@ class ItemsContainer extends React.Component {
                 onUpdateItem={this.onUpdateItem}
                 editedItem={editedItem}
                 count={count}
+                requestItems={this.props.requestItems}
             />
         );
     }
